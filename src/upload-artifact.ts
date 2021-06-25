@@ -6,6 +6,7 @@ import * as path from 'path'
 import {findFilesToUpload} from './search'
 import {getInputs} from './input-helper'
 import {NoFileOptions} from './constants'
+import {getType} from 'mime'
 
 async function run(): Promise<void> {
   try {
@@ -64,12 +65,17 @@ async function run(): Promise<void> {
           ''
         )
         const uploadKey = `${s3Prefix}/${relativeName}`
+        console.log("UPLOADING:", uploadKey);
+        console.log("MIME", getType(uploadKey));
         const uploadParams = {
           Body: fs.createReadStream(fileName),
           Bucket: inputs.s3Bucket,
           Expires: expirationDate,
           // conform windows paths to unix style paths
-          Key: uploadKey.replace(path.sep, '/')
+          Key: uploadKey.replace(path.sep, '/'),
+          Metadata: {
+            "Content-Type": getType(uploadKey),
+          }
         }
         const uploadOptions = {partSize: 10 * 1024 * 1024, queueSize: 5}
         core.info(`Starting upload of ${relativeName}`)
