@@ -73,9 +73,7 @@ async function run(): Promise<void> {
           Expires: expirationDate,
           // conform windows paths to unix style paths
           Key: uploadKey.replace(path.sep, '/'),
-          Metadata: {
-            "Content-Type": getType(uploadKey),
-          }
+          ContentType: getType(uploadKey),
         }
         const uploadOptions = {partSize: 10 * 1024 * 1024, queueSize: 5}
         core.info(`Starting upload of ${relativeName}`)
