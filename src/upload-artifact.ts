@@ -37,8 +37,7 @@ async function run(): Promise<void> {
     } else {
       const s3 = new AWS.S3({region: inputs.region, maxRetries: 10})
       const s3Prefix = `${github.context.repo.owner}/${github.context.repo.repo}/pr-previews/${github.context.issue.number}`
-      console.log("writing to", github.context.runId, "from", github.context.issue.number);
-      console.log(s3Prefix);
+      console.log("Uploading to prefix", s3Prefix);
       const s = searchResult.filesToUpload.length === 1 ? '' : 's'
       core.info(
         `With the provided path, there will be ${searchResult.filesToUpload.length} file${s} uploaded`
@@ -65,8 +64,6 @@ async function run(): Promise<void> {
           ''
         )
         const uploadKey = `${s3Prefix}/${relativeName}`
-        console.log("UPLOADING:", uploadKey);
-        console.log("MIME", getType(uploadKey));
         const uploadParams = {
           Body: fs.createReadStream(fileName),
           Bucket: inputs.s3Bucket,
