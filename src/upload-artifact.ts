@@ -36,7 +36,8 @@ async function run(): Promise<void> {
     } else {
       const s3 = new AWS.S3({region: inputs.region, maxRetries: 10})
       const s3Prefix = `${github.context.repo.owner}/${github.context.repo.repo}/${github.context.runId}/${inputs.artifactName}`
-      console.log("writing to", github.context.runId);
+      console.log("writing to", github.context.runId, "from", github.context.issue.number);
+      console.log(s3Prefix);
       const s = searchResult.filesToUpload.length === 1 ? '' : 's'
       core.info(
         `With the provided path, there will be ${searchResult.filesToUpload.length} file${s} uploaded`
