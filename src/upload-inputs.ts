@@ -29,4 +29,8 @@ export interface UploadInputs {
    * AWS region where your s3 bucket lives
    */
   region: string
+
+  awsAccessKeyId: string
+
+  awsSecretAccessKey: string
 }

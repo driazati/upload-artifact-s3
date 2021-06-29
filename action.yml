@@ -8,9 +8,6 @@ inputs:
   path:
     description: 'A file, directory or wildcard pattern that describes what to upload'
     required: true
-  s3prefix:
-    description: 'Full S3 prefix to write to'
-    default: '<unset>'
   if-no-files-found:
     description: >
       The desired behavior if no files are found using the provided path.
@@ -30,6 +27,12 @@ inputs:
     description: >
       S3 Bucket to use to put your artifacts in, typically something like "gha-artifacts"
     default: 'gha-artifacts'
+  aws-access-key-id:
+    description: aws access key id
+    default: ''
+  aws-secret-access-key:
+    description: aws secret access key
+    default: ''
   region:
     description: >
       Region your s3 bucket is in

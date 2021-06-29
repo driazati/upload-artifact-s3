@@ -4,7 +4,10 @@ export enum Inputs {
   IfNoFilesFound = 'if-no-files-found',
   RetentionDays = 'retention-days',
   S3Bucket = 's3-bucket',
-  Region = 'region'
+  Region = 'region',
+  AWSAccessKeyId = 'aws-access-key-id',
+  AWSSecretAccessKey = 'aws-secret-access-key',
+
 }
 
 export enum NoFileOptions {
