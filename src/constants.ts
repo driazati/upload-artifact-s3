@@ -7,6 +7,7 @@ export enum Inputs {
   Region = 'region',
   AWSAccessKeyId = 'aws-access-key-id',
   AWSSecretAccessKey = 'aws-secret-access-key',
+  S3Prefix = 's3-prefix',
 
 }
 

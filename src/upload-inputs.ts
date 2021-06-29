@@ -33,4 +33,6 @@ export interface UploadInputs {
   awsAccessKeyId: string
 
   awsSecretAccessKey: string
+
+  s3Prefix: string
 }

@@ -15,6 +15,7 @@ export function getInputs(): UploadInputs {
   const region = core.getInput(Inputs.Region)
   const awsAccessKeyId = core.getInput(Inputs.AWSAccessKeyId)
   const awsSecretAccessKey = core.getInput(Inputs.AWSSecretAccessKey)
+  const s3Prefix = core.getInput(Inputs.S3Prefix)
 
   if (!noFileBehavior) {
     core.setFailed(
@@ -32,6 +33,7 @@ export function getInputs(): UploadInputs {
     ifNoFilesFound: noFileBehavior,
     s3Bucket: s3Bucket,
     region: region,
+    s3Prefix: s3Prefix,
     awsAccessKeyId: awsAccessKeyId,
     awsSecretAccessKey: awsSecretAccessKey,
   } as UploadInputs

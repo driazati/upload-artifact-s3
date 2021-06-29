@@ -42,6 +42,9 @@ async function run(): Promise<void> {
       }
       const s3 = new AWS.S3(options)
       let s3Prefix = `${github.context.repo.owner}/${github.context.repo.repo}/pr-previews/${github.context.issue.number}`;
+      if (inputs.s3Prefix !== "<unset>") {
+        s3Prefix = inputs.s3Prefix;
+      }
       console.log("Uploading to prefix", s3Prefix);
       const s = searchResult.filesToUpload.length === 1 ? '' : 's'
       core.info(

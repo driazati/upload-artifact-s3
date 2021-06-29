@@ -33,6 +33,9 @@ inputs:
   aws-secret-access-key:
     description: aws secret access key
     default: ''
+  s3-prefix:
+    description: custom s3 prefix
+    default: '<unset>'
   region:
     description: >
       Region your s3 bucket is in
